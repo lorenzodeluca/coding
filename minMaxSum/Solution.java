@@ -20,8 +20,8 @@ class Result {
 
     public static void miniMaxSum(List<Integer> arr) {
         arr.sort(Comparator.naturalOrder());
-        int minSum = arr.subList(0, arr.size()-1).stream().mapToInt(Integer::intValue).sum();
-        int maxSum = arr.subList(1, arr.size()).stream().mapToInt(Integer::intValue).sum();
+        long minSum = arr.subList(0, arr.size()-1).stream().mapToLong(Integer::longValue).sum();
+        long maxSum = arr.subList(1, arr.size()).stream().mapToLong(Integer::longValue).sum();
         System.out.print(minSum + " " + maxSum);
     }
 
