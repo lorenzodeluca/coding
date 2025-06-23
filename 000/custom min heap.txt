@@ -1,0 +1,62 @@
+public class MinHeap {
+    private int[] heap;
+    private int size;
+
+    public MinHeap(int capacity) {
+        heap = new int[capacity];
+        size = 0;
+    }
+
+    private int getParent(int i) { return (i - 1) / 2; }
+    private int getLeft(int i) { return 2 * i + 1; }
+    private int getRight(int i) { return 2 * i + 2; }
+
+    public void insert(int val) {
+        if (size == heap.length) throw new RuntimeException("Heap is full");
+        heap[size] = val;
+        int current = size++;
+        while (current > 0 && heap[current] < heap[getParent(current)]) {
+            swap(current, getParent(current));
+            current = getParent(current);
+        }
+    }
+
+    public int extractMin() {
+        if (size == 0) throw new RuntimeException("Heap is empty");
+        int min = heap[0];
+        heap[0] = heap[--size];
+        heapify(0);
+        return min;
+    }
+
+    private void heapify(int i) {
+        int left = getLeft(i), right = getRight(i), smallest = i;
+
+        if (left < size && heap[left] < heap[smallest]) smallest = left;
+        if (right < size && heap[right] < heap[smallest]) smallest = right;
+
+        if (smallest != i) {
+            swap(i, smallest);
+            heapify(smallest);
+        }
+    }
+
+    private void swap(int i, int j) {
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        MinHeap heap = new MinHeap(10);
+        heap.insert(10);
+        heap.insert(4);
+        heap.insert(7);
+        heap.insert(1);
+
+        System.out.println("Extracted min elements:");
+        while (heap.size > 0) {
+            System.out.print(heap.extractMin() + " ");
+        }
+    }
+}

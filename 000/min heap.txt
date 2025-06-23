@@ -1,0 +1,17 @@
+import java.util.*;
+
+public class MinHeapExample {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        minHeap.add(10);
+        minHeap.add(4);
+        minHeap.add(7);
+        minHeap.add(1);
+
+        System.out.println("Min Heap elements (polling):");
+        while (!minHeap.isEmpty()) {
+            System.out.print(minHeap.poll() + " ");
+        }
+    }
+}
