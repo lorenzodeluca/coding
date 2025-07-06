@@ -1,4 +1,4 @@
-//avg time O(1), space O(1)
+//avg time O(log base 2 of n = log n), space O(1)
 class Solution {
     public int hammingWeight(int n) {
         int c=0;
