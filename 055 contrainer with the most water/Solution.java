@@ -1,27 +1,33 @@
 //avg time O(n), space O(1)
 
 class Solution {
-    public int myAtoi(String s) {
-        s = s.trim();
-        if (s.isEmpty()) return 0;
+    public int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int maxArea = 0;
 
-        int sign = 1, i = 0, result = 0;
+        while (left < right) {
+            int currentArea = Math.min(height[left], height[right]) * (right - left);
+            maxArea = Math.max(maxArea, currentArea);
 
-        if (s.charAt(i) == '+' || s.charAt(i) == '-') {
-            sign = (s.charAt(i) == '-') ? -1 : 1;
-            i++;
-        }
+            /*
+             * 
 
-        while (i < s.length() && Character.isDigit(s.charAt(i))) {
-            int digit = s.charAt(i) - '0';
-            if (result > (Integer.MAX_VALUE - digit) / 10) {
-                return (sign == 1) ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+Move the pointers inward: 
+
+    Check if the height at the left pointer is smaller than the height at the right pointer.
+    If so, increment the left pointer, moving it towards the center of the container.
+    Otherwise, decrement the right pointer, also moving it towards the center.
+
+
+             */
+            if (height[left] < height[right]) {
+                left++;
+            } else {
+                right--;
             }
-
-            result = result * 10 + digit;
-            i++;
         }
 
-        return result * sign;
+        return maxArea;
     }
 }
