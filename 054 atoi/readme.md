@@ -1,57 +1,83 @@
-Clone Graph
+Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer.
 
-Given a reference of a node in a connected undirected graph.
+The algorithm for myAtoi(string s) is as follows:
 
-Return a deep copy (clone) of the graph.
+    Whitespace: Ignore any leading whitespace (" ").
+    Signedness: Determine the sign by checking if the next character is '-' or '+', assuming positivity if neither present.
+    Conversion: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.
+    Rounding: If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then round the integer to remain in the range. Specifically, integers less than -231 should be rounded to -231, and integers greater than 231 - 1 should be rounded to 231 - 1.
 
-Each node in the graph contains a value (int) and a list (List[Node]) of its neighbors.
-
-class Node {
-    public int val;
-    public List<Node> neighbors;
-}
-
- 
-
-Test case format:
-
-For simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with val == 1, the second node with val == 2, and so on. The graph is represented in the test case using an adjacency list.
-
-An adjacency list is a collection of unordered lists used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.
-
-The given node will always be the first node with val = 1. You must return the copy of the given node as a reference to the cloned graph.
+Return the integer as the final result.
 
  
 
 Example 1:
 
-Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
-Output: [[2,4],[1,3],[2,4],[1,3]]
-Explanation: There are 4 nodes in the graph.
-1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
-2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
-3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
-4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
+Input: s = "42"
+
+Output: 42
+
+Explanation:
+
+The underlined characters are what is read in and the caret is the current reader position.
+Step 1: "42" (no characters read because there is no leading whitespace)
+         ^
+Step 2: "42" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: "42" ("42" is read in)
+           ^
 
 Example 2:
 
-Input: adjList = [[]]
-Output: [[]]
-Explanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.
+Input: s = " -042"
+
+Output: -42
+
+Explanation:
+
+Step 1: "   -042" (leading whitespace is read and ignored)
+            ^
+Step 2: "   -042" ('-' is read, so the result should be negative)
+             ^
+Step 3: "   -042" ("042" is read in, leading zeros ignored in the result)
+               ^
 
 Example 3:
 
-Input: adjList = []
-Output: []
-Explanation: This an empty graph, it does not have any nodes.
+Input: s = "1337c0d3"
 
- 
+Output: 1337
 
-Constraints:
+Explanation:
 
-    The number of nodes in the graph is in the range [0, 100].
-    1 <= Node.val <= 100
-    Node.val is unique for each node.
-    There are no repeated edges and no self-loops in the graph.
-    The Graph is connected and all nodes can be visited starting from the given node.
+Step 1: "1337c0d3" (no characters read because there is no leading whitespace)
+         ^
+Step 2: "1337c0d3" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: "1337c0d3" ("1337" is read in; reading stops because the next character is a non-digit)
+             ^
 
+Example 4:
+
+Input: s = "0-1"
+
+Output: 0
+
+Explanation:
+
+Step 1: "0-1" (no characters read because there is no leading whitespace)
+         ^
+Step 2: "0-1" (no characters read because there is neither a '-' nor '+')
+         ^
+Step 3: "0-1" ("0" is read in; reading stops because the next character is a non-digit)
+          ^
+
+Example 5:
+
+Input: s = "words and 987"
+
+Output: 0
+
+Explanation:
+
+Reading stops at the first non-digit character 'w'.

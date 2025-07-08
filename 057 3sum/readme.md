@@ -1,57 +1,43 @@
-Clone Graph
+3Sum
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
-Given a reference of a node in a connected undirected graph.
-
-Return a deep copy (clone) of the graph.
-
-Each node in the graph contains a value (int) and a list (List[Node]) of its neighbors.
-
-class Node {
-    public int val;
-    public List<Node> neighbors;
-}
-
- 
-
-Test case format:
-
-For simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with val == 1, the second node with val == 2, and so on. The graph is represented in the test case using an adjacency list.
-
-An adjacency list is a collection of unordered lists used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.
-
-The given node will always be the first node with val = 1. You must return the copy of the given node as a reference to the cloned graph.
+Notice that the solution set must not contain duplicate triplets.
 
  
 
 Example 1:
 
-Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
-Output: [[2,4],[1,3],[2,4],[1,3]]
-Explanation: There are 4 nodes in the graph.
-1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
-2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
-3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
-4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
 
 Example 2:
 
-Input: adjList = [[]]
-Output: [[]]
-Explanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
 
 Example 3:
 
-Input: adjList = []
-Output: []
-Explanation: This an empty graph, it does not have any nodes.
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
 
  
 
 Constraints:
 
-    The number of nodes in the graph is in the range [0, 100].
-    1 <= Node.val <= 100
-    Node.val is unique for each node.
-    There are no repeated edges and no self-loops in the graph.
-    The Graph is connected and all nodes can be visited starting from the given node.
+    3 <= nums.length <= 3000
+    -105 <= nums[i] <= 105
 
+
+
+ _._     _,-'""`-._
+(,-.`._,'(       |\`-/|
+    `-.-' \ )-`( , o o)
+          `-    \`_`"'- meow
