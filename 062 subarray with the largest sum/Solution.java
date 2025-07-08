@@ -1,4 +1,4 @@
-//time O(2^n), space O(target/smallest candidate)
+//time O(n), space O(1)
 
 class Solution {
     public int maxSubArray(int[] nums) {
