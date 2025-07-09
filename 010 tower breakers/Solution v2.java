@@ -19,6 +19,10 @@ class Result {
      * The function accepts following parameters:
      *  1. INTEGER n
      *  2. INTEGER m
+     * 
+     * 
+     * int n: the number of towers
+        int m: the height of each tower
      */
 
     public static int towerBreakers(int n, int m) {

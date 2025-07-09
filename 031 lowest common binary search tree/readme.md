@@ -6,6 +6,11 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
 
 Example 1:
 
+/*
+if (say)father=p; 
+then left_son=(2*p)+1; 
+and right_son=(2*p)+2;
+*/
 Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
 Output: 6
 Explanation: The LCA of nodes 2 and 8 is 6.

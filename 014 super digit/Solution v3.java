@@ -21,6 +21,18 @@ class Result {
      *  2. INTEGER k
      */
 
+     /*
+      * We define super digit of an integer
+
+using the following rules:
+
+    If 
+
+has only digit, then its super digit is
+.
+Otherwise, the super digit of
+is equal to the super digit of the digit-sum of . Here, digit-sum of a number is defined as the sum of its digits. 
+      */
     public static int superDigit(String n, int k) {
         long p=0;
         for(int i=0;i<n.length();i++)p+=Long.parseLong(n.substring(i, i+1));
