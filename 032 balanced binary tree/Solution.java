@@ -1,3 +1,4 @@
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -24,7 +25,7 @@ class Solution {
 		if (root == null)  return 0;
         // Height of left subtree...
 		int leftHeight = Height(root.left);
-        // Height of height subtree...
+        // Height of right subtree...
 		int rightHeight = Height(root.right);
         // In case of left subtree or right subtree unbalanced, return -1...
 		if (leftHeight == -1 || rightHeight == -1)  return -1;
